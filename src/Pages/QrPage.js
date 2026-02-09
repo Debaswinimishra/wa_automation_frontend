@@ -9,7 +9,6 @@ const QrPage = () => {
   const [status, setStatus] = useState("Waiting for QR...");
   const [connected, setConnected] = useState(false);
   console.log("connected===========>", connected);
-
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -39,8 +38,6 @@ const QrPage = () => {
       setLoading(true);
       setStatus("Sending message...");
 
-      // const res = await fetch("http://0.0.0.0:3000/master/sendParallelMessage", {
-      // const res = await fetch("http://localhost:3000/master/sendParallelMessage", {
       const res = await fetch(
         "http://35.207.197.197/master/sendParallelMessage",
         {
@@ -70,9 +67,7 @@ const QrPage = () => {
 
       const data = await res.json();
       setStatus("Message sent successfully ✅");
-      console.log("API response:", data);
     } catch (err) {
-      console.error(err);
       setStatus("Failed to send message ❌");
     } finally {
       setLoading(false);
@@ -92,11 +87,8 @@ const QrPage = () => {
       });
 
       const data = await res.json();
-      console.log("Sync response:", data);
-
       setStatus("Server synced successfully ✅");
     } catch (err) {
-      console.error(err);
       setStatus("Server sync failed ❌");
     } finally {
       setLoading(false);
@@ -108,7 +100,6 @@ const QrPage = () => {
       <h2>Scan WhatsApp QR Code</h2>
       <p>{status}</p>
 
-      {/* QR IMAGE */}
       {qrImage && !connected && (
         <img src={qrImage} alt="WhatsApp QR" width="300" style={styles.image} />
       )}
@@ -122,7 +113,6 @@ const QrPage = () => {
         </button>
       )}
 
-      {/* SEND MESSAGE BUTTON */}
       {connected && (
         <button
           onClick={handleSendMessage}

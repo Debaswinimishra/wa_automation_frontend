@@ -10,10 +10,8 @@ const Login = ({ setIsLoggedIn }) => {
 
   const handleLogin = () => {
     if (userId === "admin" && password === "admin123") {
-      localStorage.setItem("isLoggedIn", "true");
-      setIsLoggedIn(true);
+      setIsLoggedIn();
       setError("");
-      navigate("/qr");
     } else {
       setError("Invalid User ID or Password");
     }
@@ -72,7 +70,6 @@ const Login = ({ setIsLoggedIn }) => {
   );
 };
 
-// CSS Styles
 const styles = `
 .login-container {
   min-height: 100vh;
@@ -169,7 +166,6 @@ const styles = `
   transform: scale(0.98);
 }
 
-/* Responsive adjustments */
 @media (max-width: 480px) {
   .login-container {
     padding: 16px;
@@ -212,7 +208,6 @@ const styles = `
 }
 `;
 
-// Add styles to document head
 const styleSheet = document.createElement("style");
 styleSheet.textContent = styles;
 document.head.appendChild(styleSheet);
