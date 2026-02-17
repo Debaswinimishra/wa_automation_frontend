@@ -80,7 +80,7 @@ const QrPage = () => {
       setStatus("Sending message...");
 
       const res = await fetch(
-        "http://localhost:3000/master/sendParallelMessage",
+        "http://35.207.197.197/master/sendParallelMessage",
         {
           method: "POST",
           headers: {
@@ -114,7 +114,7 @@ const QrPage = () => {
       setLoading(true);
       setStatus("Syncing server...");
 
-      const res = await fetch("http://localhost:3000/master/syncServers");
+      const res = await fetch("http://35.207.197.197/master/syncServers");
       await res.json();
 
       setStatus("Server synced successfully ✅");
